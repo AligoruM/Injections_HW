@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="serverList" class="com.netcracker.devices.Server" scope="prototype">
+        <constructor-arg>
+            <list>
+                <ref bean="i9cpu"/>
+                <ref bean="i9cpu"/>
+                <ref bean="i3cpu"/>
+            </list>
+        </constructor-arg>
+        <constructor-arg value="128"/>
+    </bean>
+
+    <bean id="serverSet" class="com.netcracker.devices.Server" scope="prototype">
+        <constructor-arg>
+            <set>
+                <ref bean="i3cpu"/>
+                <ref bean="i9cpu"/>
+                <ref bean="i9cpu"/> <!--Специально повтор-->
+            </set>
+        </constructor-arg>
+        <constructor-arg value="256"/>
+    </bean>
+
+    <bean id="serverMap" class="com.netcracker.devices.Server" scope="prototype">
+        <constructor-arg>
+            <map>
+                <entry key-ref="i9cpu" value="2"/>
+                <entry key-ref="i3cpu" value="4"/>
+            </map>
+        </constructor-arg>
+        <constructor-arg value="512"/>
+    </bean>
+
+    <bean id="i9cpu" class="com.netcracker.CPUs.i9" scope="prototype"/>
+    <bean id="i3cpu" class="com.netcracker.CPUs.i3" scope="prototype"/>
+
+</beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="gamingPC" class="com.netcracker.devices.Computer" scope="prototype">
+        <property name="cpu" ref="superPuper"/>
+        <property name="memoryGB" value="128"/>
+    </bean>
+    <bean id="pcInUniversity" class="com.netcracker.devices.Computer" scope="prototype">
+        <property name="cpu" ref="neo4en"/>
+        <property name="memoryGB" value="2"/>
+    </bean>
+
+    <bean id="superPuper" class="com.netcracker.CPUs.i9" scope="prototype"/>
+    <bean id="neo4en" class="com.netcracker.CPUs.i3" scope="prototype"/>
+
+</beans>
