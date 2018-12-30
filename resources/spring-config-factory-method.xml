@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="gamimgPC" class="com.netcracker.devices.Computer">
+        <constructor-arg ref="i9"/>
+        <constructor-arg value="32"/>
+    </bean>
+    <bean id="workingPC" class="com.netcracker.devices.Computer">
+        <constructor-arg ref="i3"/>
+        <constructor-arg value="4"/>
+    </bean>
+
+    <bean id="i9" class="com.netcracker.Factory" factory-method="getI9"/>
+    <bean id="factory" class="com.netcracker.Factory"/>
+    <bean id="i3" class="com.netcracker.Factory" factory-bean="factory" factory-method="getI3"/>
+</beans>

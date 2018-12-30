@@ -1,9 +1,13 @@
 package com.netcracker;
 
+import com.netcracker.devices.Smartphone;
 import com.netcracker.devices.Computer;
 import com.netcracker.devices.Laptop;
 import com.netcracker.devices.Server;
+import com.netcracker.shop.Shaverma;
+import com.netcracker.shop.ShavermaShop;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
@@ -14,7 +18,9 @@ public class Main {
         //task22();
         //task3();
         //task4();
-        task5();
+        //task5();
+        //task6();
+        task7();
     }
 
     static void task11(){
@@ -48,8 +54,30 @@ public class Main {
     }
 
     static void task5(){
-
+        AbstractApplicationContext context = new ClassPathXmlApplicationContext("spring-config-autowired.xml");
+        Smartphone smartphone = (Smartphone) context.getBean("mobile");
+        System.out.println(smartphone);
     }
+
+    static void task6(){
+        AbstractApplicationContext context = new ClassPathXmlApplicationContext("spring-config-factory-method.xml");
+        Computer computer1 = (Computer)context.getBean("gamimgPC");
+        Computer computer2 = (Computer)context.getBean("workingPC");
+
+        System.out.println(computer1);
+        System.out.println(computer2);
+    }
+
+    static void task7(){
+        AbstractApplicationContext context = new ClassPathXmlApplicationContext("spring-config-lookup.xml");
+        ShavermaShop shop = (ShavermaShop) context.getBean("shavermaShop");
+        Shaverma firstShava = shop.makeShaverma();
+        System.out.println(firstShava);
+        Shaverma secondShava = shop.makeShaverma();
+        System.out.println(secondShava);
+        Shaverma thirdShava = shop.makeVeggieShaverma();
+        System.out.println(thirdShava);
+}
 
     static void letsGoTask1(ApplicationContext context){
         Computer superPuper = (Computer)context.getBean("gamingPC");
@@ -77,39 +105,3 @@ public class Main {
         System.out.println(serverMap.toStringMap());
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
